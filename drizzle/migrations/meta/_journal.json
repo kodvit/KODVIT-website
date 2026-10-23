@@ -1,0 +1,27 @@
+{
+  "version": "7",
+  "dialect": "postgresql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "7",
+      "when": 1792004993829,
+      "tag": "0000_create_contact_submissions",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1792044583131,
+      "tag": "0001_add_contact_rate_limit",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1792210198162,
+      "tag": "0002_extend_contact_submission_fields",
+      "breakpoints": true
+    }
+  ]
+}

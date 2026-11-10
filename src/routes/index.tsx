@@ -192,7 +192,7 @@ function HomePage() {
             <div>
               <p className="eyebrow">What we do</p>
               <h3 className="mt-2 font-display text-2xl font-semibold">
-                Practical learning through Trinetra Tech
+                Practical learning through EduTech
               </h3>
               <p className="mt-2 max-w-2xl text-sm leading-relaxed text-muted-foreground">
                 Technology workshops, hands-on projects, hackathons, internships, and
@@ -204,7 +204,7 @@ function HomePage() {
               className="shrink-0 rounded-sm bg-brand-orange text-brand-navy hover:bg-brand-orange/90 focus-visible:ring-2 focus-visible:ring-brand-blue focus-visible:ring-offset-2"
             >
               <Link to="/trinetra-tech">
-                Explore Trinetra Tech <ArrowRight aria-hidden="true" />
+                Explore EduTech <ArrowRight aria-hidden="true" />
               </Link>
             </Button>
           </div>
@@ -237,13 +237,13 @@ function HomePage() {
       <section className="section-band section-space">
         <div className="site-container split-layout">
           <div className="reveal">
-            <p className="eyebrow">Education brand</p>
-            <h2 className="section-title">Trinetra Tech</h2>
+            <p className="eyebrow">Learning & Innovation</p>
+            <h2 className="section-title">EduTech Practical Learning</h2>
             <p className="mt-3 font-display text-xl font-semibold text-brand-navy">
               Practical Learning. Real Skills. Future Readiness.
             </p>
             <p className="section-copy">
-              Trinetra Tech focuses on practical technology learning and skill development through
+              KODVIT EduTech focuses on practical technology learning and skill development through
               workshops, hands-on projects, hackathons, training programs, and career-readiness
               activities. We aim to help learners strengthen their technical abilities, build
               confidence, and prepare for future opportunities.
@@ -260,7 +260,7 @@ function HomePage() {
                 className="rounded-sm bg-brand-orange text-brand-navy hover:bg-brand-orange/90 focus-visible:ring-2 focus-visible:ring-brand-blue focus-visible:ring-offset-2"
               >
                 <Link to="/trinetra-tech">
-                  Explore Trinetra Tech <ArrowRight aria-hidden="true" />
+                  Explore EduTech <ArrowRight aria-hidden="true" />
                 </Link>
               </Button>
             </div>
@@ -274,8 +274,7 @@ function HomePage() {
             </p>
             <p className="relative z-10 mt-1 font-display text-2xl font-medium">Students trained</p>
             <p className="relative z-10 mt-5 max-w-sm text-sm leading-relaxed text-brand-white/75">
-              Through Trinetra Tech’s practical technology learning and student-development
-              initiatives.
+              Through EduTech’s practical technology learning and student-development initiatives.
             </p>
           </div>
         </div>
@@ -284,7 +283,7 @@ function HomePage() {
       <section className="section-space">
         <div className="site-container">
           <SectionHeading
-            eyebrow="Trinetra Tech"
+            eyebrow="EduTech Programs"
             title="Real learning, shared over time."
             text="Explore practical technology learning through hackathons, workshops, and internships."
           />

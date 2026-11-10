@@ -12,16 +12,17 @@ import { TrinetraVideoSection } from "@/components/TrinetraProgramVideos";
 export const Route = createFileRoute("/trinetra-tech")({
   head: () => ({
     meta: [
-      { title: "Trinetra Tech | Practical Technology Education" },
+      { title: "EduTech | Practical Technology Education" },
       {
         name: "description",
         content:
-          "Explore Trinetra Tech, a distinct education brand focused on practical technology learning and student development.",
+          "Explore KODVIT EduTech: practical technology learning, hands-on workshops, hackathons, and internship programs.",
       },
-      { property: "og:title", content: "Trinetra Tech | Practical Technology Education" },
+      { property: "og:title", content: "EduTech | Practical Technology Education" },
       {
         property: "og:description",
-        content: "Hands-on technology learning from the separate Trinetra Tech education brand.",
+        content:
+          "Hands-on technology learning, hackathons, workshops, and verified certification from KODVIT EduTech.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -62,9 +63,9 @@ function TrinetraTechPage() {
   return (
     <SiteLayout>
       <PageIntro
-        eyebrow="A separate education brand"
-        title="Trinetra Tech makes technology practical."
-        text="Trinetra Tech is a distinct education brand focused on hands-on technology learning, technical workshops, hackathons, project development, and career readiness."
+        eyebrow="Practical Technology Learning"
+        title="EduTech makes technology practical."
+        text="KODVIT EduTech focuses on hands-on technology learning, technical workshops, hackathons, project development, and career readiness with official certification."
       />
       <section className="section-space">
         <div className="site-container split-layout">
@@ -72,8 +73,8 @@ function TrinetraTechPage() {
             <p className="eyebrow">Learning through practice</p>
             <h2 className="section-title">Build skills by building things.</h2>
             <p className="section-copy">
-              Trinetra Tech brings students closer to the technologies and ways of working shaping
-              the digital world, through practical learning and student-development initiatives.
+              EduTech brings students closer to the technologies and ways of working shaping the
+              digital world, through practical learning and student-development initiatives.
             </p>
             <div className="mt-7">
               <ActionLink>Enquire about workshops</ActionLink>
@@ -88,8 +89,7 @@ function TrinetraTechPage() {
             </p>
             <p className="relative z-10 mt-1 font-display text-2xl font-medium">Students trained</p>
             <p className="relative z-10 mt-5 max-w-sm text-sm leading-relaxed text-brand-white/75">
-              Through Trinetra Tech’s practical technology learning and student-development
-              initiatives.
+              Through EduTech’s practical technology learning and student-development initiatives.
             </p>
           </div>
         </div>

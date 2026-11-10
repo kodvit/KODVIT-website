@@ -11,7 +11,7 @@ export const Route = createFileRoute("/contact")({
       {
         name: "description",
         content:
-          "Send KODVIT an enquiry about software, digital products, partnerships, or Trinetra Tech learning.",
+          "Send KODVIT an enquiry about software, digital products, partnerships, or EduTech learning.",
       },
       { property: "og:title", content: "Contact KODVIT | Start a Conversation" },
       { property: "og:description", content: "Share a project or learning enquiry with KODVIT." },
@@ -42,7 +42,7 @@ function ContactPage() {
             <SectionHeading
               eyebrow="Get in touch"
               title="What are you exploring?"
-              text="Reach KODVIT about software, digital products, partnerships, or Trinetra Tech learning."
+              text="Reach KODVIT about software, digital products, partnerships, or EduTech learning."
             />
             <div className="grid gap-5">
               <div className="detail-row">

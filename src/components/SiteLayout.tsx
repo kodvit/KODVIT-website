@@ -12,7 +12,7 @@ const navItems = [
   { label: "About KODVIT", to: "/about" as const },
   { label: "Software Solutions", to: "/solutions" as const },
   { label: "Digital Products", to: "/products" as const },
-  { label: "Trinetra Tech", to: "/trinetra-tech" as const },
+  { label: "EduTech", to: "/trinetra-tech" as const },
   { label: "Gallery", to: "/gallery" as const },
   { label: "Contact", to: "/contact" as const },
 ];

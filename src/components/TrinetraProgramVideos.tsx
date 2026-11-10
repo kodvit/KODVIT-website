@@ -1,18 +1,12 @@
 import { useEffect, useState } from "react";
 import {
   Award,
-  CheckCircle2,
   ChevronRight,
-  Code2,
-  ExternalLink,
-  Laptop,
-  Lightbulb,
   Maximize2,
   Pause,
   Play,
   RotateCcw,
   Sparkles,
-  Users,
   Video,
 } from "lucide-react";
 
@@ -34,16 +28,16 @@ export interface ProgramVideoData {
 export const programVideos: Record<ProgramVideoData["id"], ProgramVideoData> = {
   hackathon: {
     id: "hackathon",
-    title: "Trinetra Tech Hackathon",
+    title: "KODVIT Hackathon",
     category: "Hackathons",
-    tagline: "Collaborative Design → Live Presentation → KODVIT Certification",
-    videoImage: "/trinetra-hackathon-video.jpg",
+    tagline: "Collaborative Project Design → Live Stage Presentation → KODVIT Certification",
+    videoImage: "/kodvit-hackathon-video.jpg",
     durationSeconds: 9,
     scenes: [
       {
         title: "1. Collaborative Project Design",
         description:
-          "Teams sit together brainstorming real-world challenges, drafting system architecture on whiteboards, and coding the prototype sprint.",
+          "Student teams sit together brainstorming real-world challenges, architecting systems on whiteboards, and coding prototype sprints with KODVIT mentors.",
         badge: "Design & Build Sprint",
         details: [
           "Cross-functional team collaboration",
@@ -54,7 +48,7 @@ export const programVideos: Record<ProgramVideoData["id"], ProgramVideoData> = {
       {
         title: "2. Live Stage Pitch & Demo",
         description:
-          "Presenting the functional project on the main stage to industry mentors and judges with live software demonstration.",
+          "Teams present their functional software live on stage to industry judges, mentors, and the KODVIT tech jury with interactive demos.",
         badge: "Pitch & Demonstration",
         details: [
           "Live working software showcase",
@@ -65,7 +59,7 @@ export const programVideos: Record<ProgramVideoData["id"], ProgramVideoData> = {
       {
         title: "3. KODVIT Certification Award",
         description:
-          "Team celebrates their success and receives the official KODVIT Hackathon Certificate of Excellence with verified digital credential.",
+          "Team celebrates their success and receives the official KODVIT Hackathon Certificate of Excellence and verified digital credentials.",
         badge: "Official Certification",
         details: [
           "Official KODVIT verified certificate",
@@ -77,16 +71,16 @@ export const programVideos: Record<ProgramVideoData["id"], ProgramVideoData> = {
   },
   workshop: {
     id: "workshop",
-    title: "Technology Workshops",
+    title: "KODVIT Technology Workshops",
     category: "Workshops",
-    tagline: "Expert AI Tools Masterclass → Hands-on Lab → KODVIT Certification",
-    videoImage: "/trinetra-workshop-video.jpg",
+    tagline: "Expert AI Tools Masterclass → Hands-on Laptop Lab → KODVIT Certification",
+    videoImage: "/kodvit-workshop-video.jpg",
     durationSeconds: 9,
     scenes: [
       {
         title: "1. Expert AI Tools Masterclass",
         description:
-          "Industry specialist demonstrates cutting-edge generative AI tools, LLM APIs, prompt engineering, and intelligent developer workflows on interactive screens.",
+          "KODVIT specialist explains cutting-edge generative AI tools, prompt engineering, LLM integration, and modern developer workflows on interactive screens.",
         badge: "AI Tools & Architecture",
         details: [
           "Next-generation AI frameworks & APIs",
@@ -97,7 +91,7 @@ export const programVideos: Record<ProgramVideoData["id"], ProgramVideoData> = {
       {
         title: "2. Hands-on Interactive Practice",
         description:
-          "Learners listen, engage, and actively execute code on their laptops, building functional AI-assisted prototypes in real time.",
+          "Learners listen, engage, and actively execute code on their laptops, building and running functional AI-assisted prototypes in real time.",
         badge: "Guided Lab Execution",
         details: [
           "Hands-on coding exercises on laptops",
@@ -120,16 +114,16 @@ export const programVideos: Record<ProgramVideoData["id"], ProgramVideoData> = {
   },
   internship: {
     id: "internship",
-    title: "Software Engineering Internships",
+    title: "KODVIT Software Internships",
     category: "Internships",
-    tagline: "Industry Mentorship → Full-Stack Group Project → KODVIT Certification",
-    videoImage: "/trinetra-internship-video.jpg",
+    tagline: "Senior Mentorship → Full-Stack Group Project → KODVIT Certification",
+    videoImage: "/kodvit-internship-video.jpg",
     durationSeconds: 9,
     scenes: [
       {
         title: "1. Senior Engineer Mentorship",
         description:
-          "Interns learn directly from senior engineers through daily standups, architectural guidance, code reviews, and industry practices.",
+          "Interns learn directly from senior KODVIT engineers through daily standups, architectural guidance, code reviews, and industry practices.",
         badge: "Real-world Mentorship",
         details: [
           "Daily agile engineering standups",
@@ -140,7 +134,7 @@ export const programVideos: Record<ProgramVideoData["id"], ProgramVideoData> = {
       {
         title: "2. Full-Stack Group Project",
         description:
-          "Interns collaborate in high-performing teams to architect, build, and deploy production-grade software applications.",
+          "Interns collaborate in high-performing teams to architect, build, test, and deploy production-grade software applications.",
         badge: "Group Software Project",
         details: [
           "Collaborative system design & kanban sprints",
@@ -173,18 +167,21 @@ export function ProgramVideoPlayer({
   compact?: boolean;
 }) {
   const data = programVideos[programId];
-  const [isPlaying, setIsPlaying] = useState<boolean>(autoPlay);
+  // Always runs continuously by default
+  const [isPlaying, setIsPlaying] = useState<boolean>(true);
   const [progress, setProgress] = useState<number>(0);
   const [activeSceneIndex, setActiveSceneIndex] = useState<number>(0);
   const [isZoomed, setIsZoomed] = useState<boolean>(false);
+  const [isHovered, setIsHovered] = useState<boolean>(false);
 
+  // Video runs continuously in an infinite loop
   useEffect(() => {
     if (!isPlaying) return;
 
     const interval = setInterval(() => {
       setProgress((prev) => {
-        if (prev >= 100) return 0;
-        return prev + 1.1;
+        if (prev >= 100) return 0; // Infinite loop
+        return prev + 1.25;
       });
     }, 100);
 
@@ -206,6 +203,7 @@ export function ProgramVideoPlayer({
     if (idx === 1) setProgress(40);
     if (idx === 2) setProgress(75);
     setActiveSceneIndex(idx);
+    setIsPlaying(true);
   }
 
   function handleRestart() {
@@ -218,18 +216,26 @@ export function ProgramVideoPlayer({
 
   return (
     <div
-      className={`group/player relative overflow-hidden rounded-2xl border border-brand-line bg-slate-950 text-white shadow-xl ${
-        compact ? "w-full" : "w-full"
-      }`}
+      onMouseEnter={() => {
+        setIsHovered(true);
+        setIsPlaying(true); // Ensures playback is active on hover
+      }}
+      onMouseLeave={() => setIsHovered(false)}
+      className={`group/player relative overflow-hidden rounded-2xl border border-brand-line bg-slate-950 text-white shadow-xl transition-all duration-300 ${
+        isHovered ? "border-brand-blue shadow-2xl ring-2 ring-brand-blue/30" : ""
+      } ${compact ? "w-full" : "w-full"}`}
     >
       {/* Video Header Bar */}
       <div className="flex items-center justify-between border-b border-white/10 bg-slate-900/90 px-3.5 py-2 text-xs backdrop-blur-md">
         <div className="flex items-center gap-2">
-          <span className="flex h-2 w-2 items-center justify-center">
-            <span className="h-2 w-2 rounded-full bg-brand-light-blue animate-pulse" />
+          <span className="flex h-2.5 w-2.5 items-center justify-center">
+            <span className="h-2 w-2 rounded-full bg-emerald-400 animate-ping" />
           </span>
           <span className="font-semibold uppercase tracking-wider text-slate-200">
-            {data.category} Video Story
+            {data.title} • Live Video Story
+          </span>
+          <span className="hidden rounded-full bg-emerald-950 px-2 py-0.5 text-[0.65rem] font-bold text-emerald-400 border border-emerald-500/30 sm:inline">
+            Continuous Playing
           </span>
         </div>
         <div className="flex items-center gap-1.5">
@@ -240,7 +246,7 @@ export function ProgramVideoPlayer({
             aria-label={isPlaying ? "Pause video" : "Play video"}
           >
             {isPlaying ? <Pause size={11} /> : <Play size={11} />}
-            <span>{isPlaying ? "Pause" : "Play"}</span>
+            <span>{isPlaying ? "Playing" : "Play"}</span>
           </button>
           <button
             type="button"
@@ -275,7 +281,7 @@ export function ProgramVideoPlayer({
         <img
           src={data.videoImage}
           alt={data.title}
-          className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover/player:scale-[1.02]"
+          className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover/player:scale-[1.03]"
           referrerPolicy="no-referrer"
         />
 
@@ -294,7 +300,7 @@ export function ProgramVideoPlayer({
                   : "left-2/3 w-1/3 border-emerald-400/90 bg-emerald-500/10"
             }`}
           >
-            <div className="absolute top-2 left-2 rounded-md bg-slate-950/80 px-2 py-0.5 text-[0.65rem] font-bold text-white shadow-md backdrop-blur-sm">
+            <div className="absolute top-2 left-2 rounded-md bg-slate-950/85 px-2 py-0.5 text-[0.65rem] font-bold text-white shadow-md backdrop-blur-sm border border-white/10">
               {currentScene.badge}
             </div>
           </div>
@@ -329,6 +335,7 @@ export function ProgramVideoPlayer({
             <button
               key={scene.title}
               type="button"
+              onMouseEnter={() => jumpToScene(idx)}
               onClick={() => jumpToScene(idx)}
               className={`p-2.5 text-left transition ${
                 isActive
@@ -349,7 +356,7 @@ export function ProgramVideoPlayer({
                   {idx + 1}
                 </span>
                 <span className="truncate text-[0.7rem] sm:text-xs">
-                  {idx === 0 ? "1. Design" : idx === 1 ? "2. Demo / Practice" : "3. Certification"}
+                  {idx === 0 ? "1. Design" : idx === 1 ? "2. Demo / Lab" : "3. Certification"}
                 </span>
               </div>
             </button>
@@ -419,11 +426,11 @@ export function TrinetraVideoSection() {
         {/* Section Header */}
         <div className="flex flex-col items-start justify-between gap-4 md:flex-row md:items-end">
           <div>
-            <p className="eyebrow">Interactive Program Videos</p>
-            <h2 className="section-title mt-2">See learning in action.</h2>
+            <p className="eyebrow">Interactive EduTech Program Videos</p>
+            <h2 className="section-title mt-2">See EduTech learning in action.</h2>
             <p className="section-copy mt-2">
-              From collaborative project design to hands-on AI execution and official KODVIT
-              certification.
+              Continuous interactive video simulation: collaborative project design, hands-on
+              learning, and official KODVIT certification.
             </p>
           </div>
 
@@ -433,6 +440,7 @@ export function TrinetraVideoSection() {
               <button
                 key={id}
                 type="button"
+                onMouseEnter={() => setSelectedTab(id)}
                 onClick={() => setSelectedTab(id)}
                 className={`rounded-lg px-4 py-2 text-xs font-bold uppercase tracking-wider transition ${
                   selectedTab === id
@@ -441,21 +449,21 @@ export function TrinetraVideoSection() {
                 }`}
               >
                 {id === "hackathon"
-                  ? "Hackathons"
+                  ? "KODVIT Hackathons"
                   : id === "workshop"
-                    ? "AI Workshops"
-                    : "Internships"}
+                    ? "KODVIT AI Workshops"
+                    : "KODVIT Internships"}
               </button>
             ))}
           </div>
         </div>
 
-        {/* Featured Video Player */}
+        {/* Featured Continuous Video Player */}
         <div className="mt-8">
-          <ProgramVideoPlayer programId={selectedTab} />
+          <ProgramVideoPlayer programId={selectedTab} autoPlay={true} />
         </div>
 
-        {/* 3 Program Feature Cards Grid */}
+        {/* 3 Program Feature Cards Grid - hover plays video story immediately */}
         <div className="mt-8 grid gap-6 md:grid-cols-3">
           {(["hackathon", "workshop", "internship"] as const).map((id) => {
             const item = programVideos[id];
@@ -464,11 +472,12 @@ export function TrinetraVideoSection() {
               <button
                 key={id}
                 type="button"
+                onMouseEnter={() => setSelectedTab(id)}
                 onClick={() => setSelectedTab(id)}
-                className={`group flex flex-col justify-between rounded-xl border p-5 text-left transition-all ${
+                className={`group flex flex-col justify-between rounded-xl border p-5 text-left transition-all duration-300 ${
                   isCurrent
-                    ? "border-brand-blue bg-white shadow-xl ring-2 ring-brand-blue/20"
-                    : "border-brand-line bg-white/70 hover:border-brand-blue/40 hover:bg-white"
+                    ? "border-brand-blue bg-white shadow-xl ring-2 ring-brand-blue/30 scale-[1.01]"
+                    : "border-brand-line bg-white/70 hover:border-brand-blue/50 hover:bg-white hover:shadow-md"
                 }`}
               >
                 <div>
@@ -477,7 +486,7 @@ export function TrinetraVideoSection() {
                       <Sparkles size={11} /> {item.category}
                     </span>
                     <span className="text-xs font-semibold text-emerald-600">
-                      ✓ Certificate Included
+                      ✓ KODVIT Certificate
                     </span>
                   </div>
                   <h3 className="mt-3 font-display text-lg font-bold text-brand-navy group-hover:text-brand-blue">
@@ -486,14 +495,6 @@ export function TrinetraVideoSection() {
                   <p className="mt-1.5 text-xs leading-relaxed text-muted-foreground">
                     {item.tagline}
                   </p>
-                </div>
-
-                <div className="mt-4 flex items-center justify-between border-t border-brand-line/60 pt-3 text-xs font-semibold text-brand-blue">
-                  <span>{isCurrent ? "Currently Playing" : "Watch Video Story"}</span>
-                  <ChevronRight
-                    size={14}
-                    className="transition-transform group-hover:translate-x-1"
-                  />
                 </div>
               </button>
             );

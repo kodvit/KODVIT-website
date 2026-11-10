@@ -5,7 +5,7 @@ import { socialProfileUrls, buildWhatsAppUrl } from "@/lib/social-links";
 const quickPrompts = [
   "Hi KODVIT, I'm interested in building a software application.",
   "Hello, I'd like to enquire about your NFC Digital Card.",
-  "Hi, I want to learn more about Trinetra Tech workshops.",
+  "Hi, I want to learn more about EduTech workshops & hackathons.",
   "Hello KODVIT team, I have a project collaboration idea.",
 ];
 

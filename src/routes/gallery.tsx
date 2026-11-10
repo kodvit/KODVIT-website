@@ -5,16 +5,16 @@ import { ContactCallout, PageIntro, SiteLayout } from "@/components/SiteLayout";
 export const Route = createFileRoute("/gallery")({
   head: () => ({
     meta: [
-      { title: "Gallery | KODVIT and Trinetra Tech" },
+      { title: "Gallery | KODVIT Practical Learning & Innovation" },
       {
         name: "description",
         content:
-          "Explore KODVIT and Trinetra Tech gallery categories for workshops, hackathons, training, and activities.",
+          "Explore KODVIT gallery categories for interactive workshops, hackathons, software training, and community activities.",
       },
-      { property: "og:title", content: "Gallery | KODVIT and Trinetra Tech" },
+      { property: "og:title", content: "Gallery | KODVIT Practical Learning & Innovation" },
       {
         property: "og:description",
-        content: "Gallery categories for KODVIT and Trinetra Tech activities.",
+        content: "Gallery categories for KODVIT workshops, hackathons, and activities.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },

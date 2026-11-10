@@ -92,9 +92,9 @@ function AboutPage() {
         <div className="site-container split-layout">
           <div>
             <p className="eyebrow">Education and skill development</p>
-            <h2 className="section-title">About Trinetra Tech</h2>
+            <h2 className="section-title">About EduTech</h2>
             <p className="section-copy">
-              Trinetra Tech focuses on practical learning and skill development through technology
+              KODVIT EduTech focuses on practical learning and skill development through technology
               workshops, hands-on projects, hackathons, training programs, and career-readiness
               activities. Its programs encourage learning by doing and help learners develop skills
               for academic, personal, and professional growth.
@@ -105,7 +105,7 @@ function AboutPage() {
                 className="rounded-sm bg-brand-orange text-brand-navy hover:bg-brand-orange/90 focus-visible:ring-2 focus-visible:ring-brand-blue focus-visible:ring-offset-2"
               >
                 <Link to="/trinetra-tech">
-                  Explore Trinetra Tech <ArrowRight aria-hidden="true" />
+                  Explore EduTech <ArrowRight aria-hidden="true" />
                 </Link>
               </Button>
             </div>

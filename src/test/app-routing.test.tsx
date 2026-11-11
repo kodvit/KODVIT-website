@@ -15,13 +15,18 @@ describe("App routing", () => {
     expect(matches.at(-1)?.routeId).not.toBe(rootRouteId);
   });
 
-  it.each(["/about", "/solutions", "/products", "/trinetra-tech", "/gallery", "/contact"])(
-    "matches the planned page at %s",
-    (path) => {
-      const router = createRouter({ routeTree, context: { queryClient: new QueryClient() } });
-      const matches = router.matchRoutes(path);
+  it.each([
+    "/about",
+    "/solutions",
+    "/products",
+    "/edutech",
+    "/trinetra-tech",
+    "/gallery",
+    "/contact",
+  ])("matches the planned page at %s", (path) => {
+    const router = createRouter({ routeTree, context: { queryClient: new QueryClient() } });
+    const matches = router.matchRoutes(path);
 
-      expect(matches.at(-1)?.routeId).not.toBe(rootRouteId);
-    },
-  );
+    expect(matches.at(-1)?.routeId).not.toBe(rootRouteId);
+  });
 });

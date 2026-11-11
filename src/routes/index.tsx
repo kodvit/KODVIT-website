@@ -116,7 +116,7 @@ const pillars = [
     description:
       "Transformative practical technology education: 21 Days Induction for 1st-year students, rapid hackathons, AI workshops, and full-stack software internships.",
     icon: GraduationCap,
-    link: "/trinetra-tech",
+    link: "/edutech",
     linkLabel: "Explore EduTech Learning",
     bullets: [
       "21 Days Induction (Public Speaking & Leadership)",
@@ -167,7 +167,7 @@ function HomePage() {
                 asChild
                 className="bg-brand-orange text-brand-navy hover:bg-brand-orange/90 font-semibold shadow-md"
               >
-                <Link to="/trinetra-tech">
+                <Link to="/edutech">
                   21-Day Induction & EduTech <GraduationCap aria-hidden="true" />
                 </Link>
               </Button>
@@ -463,7 +463,7 @@ function HomePage() {
                 asChild
                 className="rounded-lg bg-brand-orange text-brand-navy hover:bg-brand-orange/90 font-bold shadow-md"
               >
-                <Link to="/trinetra-tech">
+                <Link to="/edutech">
                   Explore EduTech Programs <ArrowRight aria-hidden="true" />
                 </Link>
               </Button>

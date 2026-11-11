@@ -104,7 +104,7 @@ function AboutPage() {
                 asChild
                 className="rounded-sm bg-brand-orange text-brand-navy hover:bg-brand-orange/90 focus-visible:ring-2 focus-visible:ring-brand-blue focus-visible:ring-offset-2"
               >
-                <Link to="/trinetra-tech">
+                <Link to="/edutech">
                   Explore EduTech <ArrowRight aria-hidden="true" />
                 </Link>
               </Button>

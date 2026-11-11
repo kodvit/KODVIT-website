@@ -12,7 +12,7 @@ const navItems = [
   { label: "About KODVIT", to: "/about" as const },
   { label: "Software Solutions", to: "/solutions" as const },
   { label: "Digital Products", to: "/products" as const },
-  { label: "EduTech", to: "/trinetra-tech" as const },
+  { label: "EduTech", to: "/edutech" as const },
   { label: "Gallery", to: "/gallery" as const },
   { label: "Contact", to: "/contact" as const },
 ];
@@ -33,7 +33,7 @@ export function SiteHeader() {
         </Link>
         <nav className="desktop-nav" aria-label="Main navigation">
           {navItems.map((item) =>
-            item.to === "/trinetra-tech" ? (
+            item.to === "/edutech" ? (
               <Button
                 key={item.to}
                 asChild
@@ -72,7 +72,7 @@ export function SiteHeader() {
               <X aria-hidden="true" className="text-muted-foreground" />
             </div>
             {navItems.map((item) =>
-              item.to === "/trinetra-tech" ? (
+              item.to === "/edutech" ? (
                 <Button
                   key={item.to}
                   asChild
@@ -257,7 +257,8 @@ export function ActionLink({
   to = "/contact",
   children,
 }: {
-  to?: "/contact" | "/solutions" | "/products" | "/about" | "/trinetra-tech" | "/gallery";
+  to?:
+    "/contact" | "/solutions" | "/products" | "/about" | "/trinetra-tech" | "/edutech" | "/gallery";
   children: ReactNode;
 }) {
   return (

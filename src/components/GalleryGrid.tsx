@@ -3,14 +3,7 @@ import { ArrowLeft, ArrowRight, Award, Play, Sparkles, Video, X } from "lucide-r
 import { Button } from "@/components/ui/button";
 import { ProgramVideoPlayer, programVideos } from "@/components/TrinetraProgramVideos";
 
-const filters = [
-  "All",
-  "Hackathons",
-  "Workshops",
-  "Internships",
-  "College Events",
-  "Other Activities",
-] as const;
+const filters = ["All", "21 Days Induction", "Hackathons", "Workshops", "Internships"] as const;
 type GalleryCategory = Exclude<(typeof filters)[number], "All">;
 
 export interface GalleryItemData {
@@ -20,10 +13,21 @@ export interface GalleryItemData {
   date: string;
   image?: string;
   imageAlt?: string;
-  programId?: "hackathon" | "workshop" | "internship";
+  programId?: "induction" | "hackathon" | "workshop" | "internship";
 }
 
 const items: GalleryItemData[] = [
+  {
+    title: "21 Days Induction Program (1st Year Flagship)",
+    description:
+      "Flagship 21-day intensive program for 1st-year students: public speaking, leadership skills, presentation mastery, and rock-solid confidence with official KODVIT certification.",
+    category: "21 Days Induction",
+    date: "Continuous Video Story",
+    image: "/kodvit-induction-video.jpg",
+    imageAlt:
+      "21 Days Induction Program: public speaking, leadership, presentation skills, and KODVIT certification",
+    programId: "induction",
+  },
   {
     title: "KODVIT Hackathons",
     description:
@@ -54,24 +58,6 @@ const items: GalleryItemData[] = [
     imageAlt:
       "KODVIT Internship: senior mentorship, group software project, and KODVIT certification",
     programId: "internship",
-  },
-  {
-    title: "College collaborations",
-    description: "Space for genuine college event photographs.",
-    category: "College Events",
-    date: "Date to be added",
-  },
-  {
-    title: "Expert sessions",
-    description: "Space for guest sessions and learning activities.",
-    category: "Other Activities",
-    date: "Date to be added",
-  },
-  {
-    title: "Student projects",
-    description: "Space for authentic project showcases and announcements.",
-    category: "Other Activities",
-    date: "Date to be added",
   },
 ];
 
@@ -220,7 +206,7 @@ export function GalleryGrid({ preview = false }: { preview?: boolean }) {
     () => items.filter((item) => filter === "All" || item.category === filter),
     [filter],
   );
-  const displayedItems = preview ? visibleItems.slice(0, 3) : visibleItems;
+  const displayedItems = preview ? visibleItems.slice(0, 4) : visibleItems;
   const selected = active === null ? null : (visibleItems[active] ?? null);
 
   function move(direction: number) {

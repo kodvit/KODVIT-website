@@ -11,10 +11,11 @@ import {
 } from "lucide-react";
 
 export interface ProgramVideoData {
-  id: "hackathon" | "workshop" | "internship";
+  id: "induction" | "hackathon" | "workshop" | "internship";
   title: string;
-  category: "Hackathons" | "Workshops" | "Internships";
+  category: "21 Days Induction" | "Hackathons" | "Workshops" | "Internships";
   tagline: string;
+  badge?: string;
   videoImage: string;
   durationSeconds: number;
   scenes: {
@@ -26,6 +27,51 @@ export interface ProgramVideoData {
 }
 
 export const programVideos: Record<ProgramVideoData["id"], ProgramVideoData> = {
+  induction: {
+    id: "induction",
+    title: "21 Days Induction Program",
+    category: "21 Days Induction",
+    tagline:
+      "1st Year Flagship: Public Speaking → Leadership & Presentations → Confidence & KODVIT Certification",
+    badge: "Most Important 1st Year Flagship",
+    videoImage: "/kodvit-induction-video.jpg",
+    durationSeconds: 9,
+    scenes: [
+      {
+        title: "1. Days 1–7: Public Speaking & Vocal Presence",
+        description:
+          "Overcoming stage fear through daily impromptu talks, breathwork, voice projection, and structured storytelling on the podium.",
+        badge: "Public Speaking & Fear Elimination",
+        details: [
+          "Eliminating stage fright & hesitation",
+          "Voice modulation, posture, and mic control",
+          "Structured storytelling & speech framework",
+        ],
+      },
+      {
+        title: "2. Days 8–14: Leadership & Presentation Skills",
+        description:
+          "Mastering executive slide design, team orchestration, persuasive debate challenges, and confident group presentations.",
+        badge: "Leadership & Presentation Mastery",
+        details: [
+          "High-impact slide deck design & delivery",
+          "Collaborative team leadership & debate",
+          "Active listening & Q&A handling",
+        ],
+      },
+      {
+        title: "3. Days 15–21: Unshakeable Confidence & KODVIT Certification",
+        description:
+          "Students deliver capstone keynote speeches on the auditorium stage, receive mentor evaluations, and celebrate official KODVIT certification.",
+        badge: "Confidence Mastery & Certification",
+        details: [
+          "Final keynote speech on main stage",
+          "Verified KODVIT 21-Day Completion Certificate",
+          "Lifelong professional communication confidence",
+        ],
+      },
+    ],
+  },
   hackathon: {
     id: "hackathon",
     title: "KODVIT Hackathon",
@@ -331,6 +377,31 @@ export function ProgramVideoPlayer({
       <div className="grid grid-cols-3 divide-x divide-white/10 border-t border-white/10 bg-slate-900/95 text-xs">
         {data.scenes.map((scene, idx) => {
           const isActive = activeSceneIndex === idx;
+          const stageShortLabel =
+            programId === "induction"
+              ? idx === 0
+                ? "1. Public Speaking"
+                : idx === 1
+                  ? "2. Leadership Skills"
+                  : "3. Confidence & Cert"
+              : programId === "hackathon"
+                ? idx === 0
+                  ? "1. Project Design"
+                  : idx === 1
+                    ? "2. Live Demo"
+                    : "3. Certification"
+                : programId === "workshop"
+                  ? idx === 0
+                    ? "1. AI Tools"
+                    : idx === 1
+                      ? "2. Hands-on Lab"
+                      : "3. Certification"
+                  : idx === 0
+                    ? "1. Mentorship"
+                    : idx === 1
+                      ? "2. Group Project"
+                      : "3. Certification";
+
           return (
             <button
               key={scene.title}
@@ -355,9 +426,7 @@ export function ProgramVideoPlayer({
                 >
                   {idx + 1}
                 </span>
-                <span className="truncate text-[0.7rem] sm:text-xs">
-                  {idx === 0 ? "1. Design" : idx === 1 ? "2. Demo / Lab" : "3. Certification"}
-                </span>
+                <span className="truncate text-[0.7rem] sm:text-xs">{stageShortLabel}</span>
               </div>
             </button>
           );
@@ -418,7 +487,7 @@ export function ProgramVideoPlayer({
 }
 
 export function TrinetraVideoSection() {
-  const [selectedTab, setSelectedTab] = useState<ProgramVideoData["id"]>("hackathon");
+  const [selectedTab, setSelectedTab] = useState<ProgramVideoData["id"]>("induction");
 
   return (
     <section className="section-space bg-gradient-to-b from-brand-ice/40 via-white to-brand-ice/30">
@@ -429,30 +498,32 @@ export function TrinetraVideoSection() {
             <p className="eyebrow">Interactive EduTech Program Videos</p>
             <h2 className="section-title mt-2">See EduTech learning in action.</h2>
             <p className="section-copy mt-2">
-              Continuous interactive video simulation: collaborative project design, hands-on
-              learning, and official KODVIT certification.
+              Continuous interactive video stories: 21 Days Induction, hackathons, AI workshops, and
+              software internships with verified KODVIT certification.
             </p>
           </div>
 
           {/* Program Selectors */}
           <div className="flex flex-wrap gap-2">
-            {(["hackathon", "workshop", "internship"] as const).map((id) => (
+            {(["induction", "hackathon", "workshop", "internship"] as const).map((id) => (
               <button
                 key={id}
                 type="button"
                 onMouseEnter={() => setSelectedTab(id)}
                 onClick={() => setSelectedTab(id)}
-                className={`rounded-lg px-4 py-2 text-xs font-bold uppercase tracking-wider transition ${
+                className={`rounded-lg px-3.5 py-2 text-xs font-bold uppercase tracking-wider transition ${
                   selectedTab === id
                     ? "bg-brand-blue text-white shadow-md ring-2 ring-brand-blue/30"
                     : "border border-brand-line bg-white text-brand-navy hover:bg-brand-ice"
                 }`}
               >
-                {id === "hackathon"
-                  ? "KODVIT Hackathons"
-                  : id === "workshop"
-                    ? "KODVIT AI Workshops"
-                    : "KODVIT Internships"}
+                {id === "induction"
+                  ? "21 Days Induction (Flagship)"
+                  : id === "hackathon"
+                    ? "KODVIT Hackathons"
+                    : id === "workshop"
+                      ? "KODVIT AI Workshops"
+                      : "KODVIT Internships"}
               </button>
             ))}
           </div>
@@ -463,9 +534,9 @@ export function TrinetraVideoSection() {
           <ProgramVideoPlayer programId={selectedTab} autoPlay={true} />
         </div>
 
-        {/* 3 Program Feature Cards Grid - hover plays video story immediately */}
-        <div className="mt-8 grid gap-6 md:grid-cols-3">
-          {(["hackathon", "workshop", "internship"] as const).map((id) => {
+        {/* 4 Program Feature Cards Grid - hover plays video story immediately */}
+        <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {(["induction", "hackathon", "workshop", "internship"] as const).map((id) => {
             const item = programVideos[id];
             const isCurrent = selectedTab === id;
             return (
@@ -474,25 +545,36 @@ export function TrinetraVideoSection() {
                 type="button"
                 onMouseEnter={() => setSelectedTab(id)}
                 onClick={() => setSelectedTab(id)}
-                className={`group flex flex-col justify-between rounded-xl border p-5 text-left transition-all duration-300 ${
+                className={`group flex flex-col justify-between rounded-xl border p-4 sm:p-5 text-left transition-all duration-300 ${
                   isCurrent
                     ? "border-brand-blue bg-white shadow-xl ring-2 ring-brand-blue/30 scale-[1.01]"
                     : "border-brand-line bg-white/70 hover:border-brand-blue/50 hover:bg-white hover:shadow-md"
                 }`}
               >
                 <div>
-                  <div className="flex items-center justify-between">
-                    <span className="inline-flex items-center gap-1.5 rounded-full bg-brand-ice px-2.5 py-1 text-[0.7rem] font-bold text-brand-blue">
-                      <Sparkles size={11} /> {item.category}
+                  <div className="flex items-center justify-between gap-1">
+                    <span
+                      className={`inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[0.65rem] font-bold ${
+                        id === "induction"
+                          ? "bg-amber-100 text-amber-800 border border-amber-300"
+                          : "bg-brand-ice text-brand-blue"
+                      }`}
+                    >
+                      <Sparkles size={10} /> {item.category}
                     </span>
-                    <span className="text-xs font-semibold text-emerald-600">
-                      ✓ KODVIT Certificate
+                    <span className="text-[0.68rem] font-semibold text-emerald-600">
+                      ✓ Certificate
                     </span>
                   </div>
-                  <h3 className="mt-3 font-display text-lg font-bold text-brand-navy group-hover:text-brand-blue">
+                  {item.badge && (
+                    <span className="mt-2 inline-block rounded bg-brand-blue/10 px-1.5 py-0.5 text-[0.65rem] font-bold text-brand-blue">
+                      ★ {item.badge}
+                    </span>
+                  )}
+                  <h3 className="mt-2 font-display text-base sm:text-lg font-bold text-brand-navy group-hover:text-brand-blue">
                     {item.title}
                   </h3>
-                  <p className="mt-1.5 text-xs leading-relaxed text-muted-foreground">
+                  <p className="mt-1.5 text-xs leading-relaxed text-muted-foreground line-clamp-3">
                     {item.tagline}
                   </p>
                 </div>
